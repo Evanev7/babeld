@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PREFIX="fde0:20c6:1fa7:cec2"
+PREFIX="fde0:20c6:1fa7:ffff"
 
 addrs=()
 ifs=()
