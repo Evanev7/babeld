@@ -32,7 +32,7 @@ run_babeld() {
   done
 
   for ip in "${addrs[@]}"; do
-    args+=(-C "redistribute ip $ip/128 allow")
+    args+=(-C "redistribute ip $ip/128 local allow")
   done
   args+=(-C "redistribute local deny")
 
