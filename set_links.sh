@@ -30,10 +30,7 @@ run_babeld() {
   for iface in "${ifs[@]}"; do
     args+=(-C "interface $iface")
   done
-
-  for ip in "${addrs[@]}"; do
-    args+=(-C "redistribute ip $ip/128 local allow")
-  done
+  args+=(-C "redistribute ip $PREFIX::/64 local allow")
   args+=(-C "redistribute local deny")
 
   echo "starting babeld with args ${args[*]}"
