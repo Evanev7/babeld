@@ -14,12 +14,14 @@
       system:
       let
         pkgs = inputs.nixpkgs.legacyPackages.${system};
-        pname = "babeld";
-        version = "1.13.1";
-      in
+      in rec
       {
-        packages.default = pkgs.stdenv.mkDerivation {
-          inherit pname version;
+        devShells.default = pkgs.mkShell {
+          packages = [ packages.default ];
+        };
+        packages.default = pkgs.stdenv.mkDerivation rec {
+          pname = "babeld";
+          version = "1.13.1";
 
           src = pkgs.fetchurl {
             url = "https://www.irif.fr/~jch/software/files/${pname}-${version}.tar.gz";
