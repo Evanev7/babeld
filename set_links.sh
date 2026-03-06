@@ -32,9 +32,9 @@ run_babeld() {
   done
 
   for ip in "${addrs[@]}"; do
-    args+=(-C "redistribute ip $ip/128")
+    args+=(-C "redistribute ip $ip/128 allow")
   done
-  # args+=(-C "redistribute local deny")
+  args+=(-C "redistribute local deny")
 
   echo "starting babeld with args ${args[*]}"
   exec sudo babeld -g "/tmp/babeld.sock" "${args[@]}"
